@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useKeepAwake } from '@sayem314/react-native-keep-awake';
 import { Login } from './src/auth/login';
 import { Classes } from './src/home/classes';
+import { Classroom } from './src/home/classroom';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,9 +24,10 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName={'Login'}>
+          initialRouteName={'Classes'}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Classes" component={Classes} />
+          <Stack.Screen name="Classroom" component={Classroom} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

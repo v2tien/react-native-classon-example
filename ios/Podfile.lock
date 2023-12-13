@@ -3,7 +3,7 @@ PODS:
     - JitsiWebRTC (~> 111.0.0)
     - React-Core
   - boost (1.83.0)
-  - classon (0.2.4):
+  - classon (0.2.5):
     - React-Core
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -1425,7 +1425,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   bluesea-react-native-webrtc: 45ac7478847d689fd7b76fdc9909e9d4c83c0446
   boost: 26fad476bfa736552bbfa698a06cc530475c1505
-  classon: 01f4efb007ff709fea1f12338e7bfec9f014a995
+  classon: baf26b8714a41eee266537ab40244a033442f80a
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   FBLazyVector: 39ba45baf4e398618f8b3a4bb6ba8fcdb7fc2133
