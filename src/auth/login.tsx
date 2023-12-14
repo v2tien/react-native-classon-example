@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { styles } from './styles';
 import axios from 'axios';
@@ -38,11 +37,7 @@ export function Login() {
       .then(async res => {
         const { data, status } = res;
         if (status === 200) {
-          global.token = data.token.jwt;
-          global.user = data.user;
-          await AsyncStorage.setItem('TOKEN', data.token.jwt);
-          await AsyncStorage.setItem('USER', data.user);
-          navigation.replace('Classes');
+          navigation.navigate('Working', { token: data.token.jwt });
         } else {
           Alert.alert('Error', `status = ${status}`);
         }

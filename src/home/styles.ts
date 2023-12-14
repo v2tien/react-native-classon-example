@@ -1,17 +1,17 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('screen');
-const widthItem = (width - 48) / 4;
+const widthItem = (width - 80) / 4;
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   item: {
-    margin: 6,
+    margin: 10,
     padding: 6,
     width: widthItem,
-    backgroundColor: '#ddd',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
@@ -29,6 +29,17 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
+  },
+  vLoading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  thumbnail: {
+    width: '100%',
+    height: 100,
+    backgroundColor: '#ddd',
+    marginBottom: 5,
+    borderRadius: 5,
   },
 });
