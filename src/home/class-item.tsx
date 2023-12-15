@@ -5,8 +5,9 @@ import { bookData } from '../common/bookdata2';
 import { useNavigation } from '@react-navigation/native';
 import { PlayProps } from '../common/classroom';
 import FastImage from 'react-native-fast-image';
+import { Class, Participation } from '../types/class';
 
-export function ClassItem(props: { item: any }) {
+export function ClassItem(props: { item: Class }) {
   const { item } = props;
   const navigation = useNavigation<any>();
 
@@ -21,21 +22,24 @@ export function ClassItem(props: { item: any }) {
   const onPress = () => {
     if (item.participations.length > 1) {
       const myInfo = item.participations.find(
-        (e: any) => e.linked_user_id === global.user.user.id,
+        (e: Participation) => e.linked_user_id === global.user.user.id,
       );
 
       if (!myInfo) {
-        Alert.alert('Message', 'Bạn không có trong lớp học này');
+        Alert.alert('Message', 'Bạn không có trong lớp học này!');
         return;
       }
 
       const data: PlayProps = {
         bookData: item.book_lessons?.content ?? bookData,
-        hasSocket: false,
-        isTeacher: myInfo.class_roles?.code === 'TEACHER' ? true : false,
-        token: global.token,
+        hasSocket: true,
+        token: `Bearer ${global.token}`,
         classId: item.id,
-        userId: myInfo.linked_user_id,
+        user: {
+          id: myInfo.linked_user_id,
+          role: myInfo.class_roles?.code,
+          fullname: myInfo.linked_user?.username,
+        },
       };
       navigation.navigate('Classroom', { data });
     } else {
@@ -53,7 +57,7 @@ export function ClassItem(props: { item: any }) {
   return (
     <TouchableOpacity activeOpacity={0.5} style={styles.item} onPress={onPress}>
       <FastImage
-        source={{ uri: item.book_lessons?.thumbnail }}
+        source={{ uri: item.book_lessons?.thumbnail ?? '' }}
         style={styles.thumbnail}
         resizeMode="contain"
       />
@@ -64,7 +68,7 @@ export function ClassItem(props: { item: any }) {
       </Text>
       <Text style={styles.txtDesc}>
         Students ({students.length}):{' '}
-        {students.map((s: any, i: number) => (
+        {students.map((s: Participation, i: number) => (
           <Text key={s.linked_user.id}>
             {s.linked_user?.username ?? ''}
             {i === students.length - 1 ? '' : ', '}

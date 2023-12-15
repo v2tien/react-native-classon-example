@@ -7,12 +7,13 @@ import { styles } from './styles';
 import { WorkingItem } from './working-item';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Partner } from '../types/partner';
 
 export function ListWorking() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
-  const [workplaces, setWorkplaces] = useState([]);
+  const [workplaces, setWorkplaces] = useState<Partner[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const { token } = route.params;
@@ -53,7 +54,7 @@ export function ListWorking() {
   }, [getWorking]);
 
   const selectWorking = useCallback(
-    async (item: any) => {
+    async (item: Partner) => {
       const contentHeader = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -83,7 +84,7 @@ export function ListWorking() {
     [navigation, token],
   );
 
-  const renderItem = ({ item }: { item: any }) => (
+  const renderItem = ({ item }: { item: Partner }) => (
     <WorkingItem item={item} selectWorking={() => selectWorking(item)} />
   );
 

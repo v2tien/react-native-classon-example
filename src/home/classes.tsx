@@ -7,11 +7,12 @@ import { ClassItem } from './class-item';
 import { BackButton } from './back-button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { Class } from '../types/class';
 
 export function Classes() {
   const navigation = useNavigation<any>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [classes, setClasses] = useState<any>();
+  const [classes, setClasses] = useState<Class[]>([]);
 
   const getUserInfo = async () => {
     const contentHeader = {
@@ -75,7 +76,7 @@ export function Classes() {
     getClasses();
   }, []);
 
-  const renderItem = ({ item }: { item: any }) => <ClassItem item={item} />;
+  const renderItem = ({ item }: { item: Class }) => <ClassItem item={item} />;
 
   return (
     <View style={styles.container}>

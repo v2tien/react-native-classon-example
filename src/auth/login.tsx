@@ -12,6 +12,7 @@ import { styles } from './styles';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { DOMAIN_URL } from '../common/constants';
+import { Profile } from '../types/user';
 
 export function Login() {
   const navigation = useNavigation<any>();
@@ -35,7 +36,7 @@ export function Login() {
         headers: contentHeader,
       })
       .then(async res => {
-        const { data, status } = res;
+        const { data, status }: { data: Profile; status: number } = res;
         if (status === 200) {
           navigation.navigate('Working', { token: data.token.jwt });
         } else {

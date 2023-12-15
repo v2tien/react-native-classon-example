@@ -116,7 +116,7 @@ export function Classroom() {
       <ClassOn
         classId={data.classId ?? 'class_test'}
         token={data.token ?? ''}
-        isTeacher={data.isTeacher ?? false}
+        user={data.user}
         bookData={data.bookData}
         live={data.hasSocket ?? false}
       />

@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios && react-native start",
+    "ios": "react-native run-ios --simulator='iPad Pro (11-inch) (4th generation)' && react-native start",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@classon/react-native": "^0.2.5",
+    "@classon/react-native": "^0.2.8",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",

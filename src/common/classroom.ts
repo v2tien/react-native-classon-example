@@ -5,6 +5,5 @@ export type PlayProps = {
   token?: string | null;
   bookData: SectionType[];
   hasSocket?: boolean;
-  isTeacher?: boolean;
-  userId?: string;
+  user: { id: string | number; role: string; fullname?: string };
 };

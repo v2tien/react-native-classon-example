@@ -15,6 +15,7 @@ import { Classes } from './src/home/classes';
 import { Classroom } from './src/home/classroom';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ListWorking } from './src/working/list-working';
+import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaProvider>
+      <StatusBar hidden={true} />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
