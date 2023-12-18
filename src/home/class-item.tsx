@@ -32,7 +32,7 @@ export function ClassItem(props: { item: Class }) {
 
       const data: PlayProps = {
         bookData: item.book_lessons?.content ?? bookData,
-        hasSocket: true,
+        live: true,
         token: `Bearer ${global.token}`,
         classId: item.id,
         user: {

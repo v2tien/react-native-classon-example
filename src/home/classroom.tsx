@@ -80,7 +80,7 @@ export function Classroom() {
           }}
         />
 
-        {!block && !data.hasSocket && (
+        {!block && !data.live && (
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Button
               title="Start"
@@ -118,7 +118,7 @@ export function Classroom() {
         token={data.token ?? ''}
         user={data.user}
         bookData={data.bookData}
-        live={data.hasSocket ?? false}
+        live={data.live ?? false}
       />
     </View>
   );
