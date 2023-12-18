@@ -81,7 +81,7 @@ A simple usage:
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
 | conferenceType  (required) |  Use the conference type for classes   | number (0: no conference, 1: bluesea conference )|
-| children (required)     | Is a child component wrapped by Connection. It is [ClassonScreen](#basic) | JSX.Element  |
+| children (required)     | Is a child component wrapped by Connection. It is [ClassonScreen](#--classonscreen) | JSX.Element  |
 
 #### - ClassonScreen
 
@@ -101,7 +101,7 @@ A simple usage:
 | onlyAudio   (optional)      | Allow only audio, no video     | Boolean   |
 | containerStyle  (optional) |  A style object that allow you to customize the BlueseaView container style   | ViewStyle|
 | listContainerStyle (optional) | A style object that allow you to customize list container style  | ViewStyle  |
-| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#-blueseaitemprops)  |
+| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#--blueseaitemprops)  |
 | renderBlueseaItem (optional) | Customize view video item conference      | JSX.Element       |
 | renderBluseaView (optional)  | Customize video conference container      | JSX.Element       |
 
