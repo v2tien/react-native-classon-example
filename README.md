@@ -72,13 +72,13 @@ Tuỳ chỉnh view hiển thị theo ý của mình
 import { ClassonPlayer, Connection, BlueseaConference } from '@classon/react-native';
 
 // Một số thành phần chỉ hiển thị trong vai trò của giáo viên: 
-import { ClassState, AgendaCurriculum, ScriptAction, ClassControl } from '@classon/react-native';
+import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } from '@classon/react-native';
 
 <View style={styles.container}>
   {isTeacher && live && (
     <View style={styles.vControl}>
       <ClassState isTeacher={isTeacher} live={live} />
-      <ClassControl isTeacher={isTeacher} live={live} />
+      <ClassControl />
       <ClassInfo />
     </View>
   )}
@@ -163,6 +163,31 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl } from '@class
 |-------------------------|---------------------------------------------------------------|--------------|
 | itemContainerStyle (optional) | Style object to customize item container   | ViewStyle       |
 | videoStyle   (optional)       | Style object to customize video item view   | ViewStyle       |
+
+#### - ClassState
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| buttonStyles            | Style object to customize button                              | ViewStyle    |
+| isTeacher               | Set teacher or student                                        | Boolean      |
+| live                    | Class status online or offline                                | Boolean      |
+
+#### - ClassControl
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| buttonStyles            | Style object to customize button                              | ViewStyle    |
+| iconStyle               | Style object to customize icon                                | ViewStyle    |
+| volumeStyles            | Style object to customize volume view                         | [VolumeProps](#--volumeprops)) |
+
+##### - VolumeProps
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| viewContent             | Style object to customize item content                        | ViewStyle    |
+| volumeIcon              | Customize volume icon                                         | ImageRequireSource|
+| iconStyle               | Style object to customize icon                                | ViewStyle    |
+| sliderStyles            | Style object to customize volume view                         | [MultiSliderProps](https://github.com/ptomasroos/react-native-multi-slider/blob/master/index.d.ts#L38) |
+
 
 ## API
 
