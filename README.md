@@ -7,7 +7,7 @@ classon react native sdk
 1. [Usage](#usage)
 1. [Component](#component)
 1. [API](#api)
-1. [Examples](https://git.ngon.io/classon.io/classon-react-native/-/tree/master/example)
+1. [Examples](https://github.com/v2tien/react-native-classon-example)
 
 ## Install
 
@@ -94,7 +94,7 @@ A simple usage:
 
 | Name                  |               Description                                        | Type         |
 |-----------------------|------------------------------------------------------------------|--------------|
-| bookData (required)   | Lesson's data ([Example](https://git.ngon.io/classon.io/classon-react-native/-/blob/master/example/src/fake/bookdata.ts))                                                                                       | Object       |
+| bookData (required)   | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts))                                                                                       | Object       |
 | user  (optional)      | User information                                              | Object ({id: number, role: string})|
 | render (optional)     | Render progress component while waiting for the data to completed | Function     |
 | live (optional)       | Set class status online or offline                            | Boolean     |
