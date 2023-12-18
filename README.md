@@ -69,13 +69,16 @@ import { ClassOn } from '@classon/react-native';
 Tuỳ chỉnh view hiển thị theo ý của mình
 
 ```js
-import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, ControlClassroom } from '@classon/react-native';
+import { ClassonPlayer, Connection, BlueseaConference } from '@classon/react-native';
+
+// Một số thành phần chỉ hiển thị trong vai trò của giáo viên: 
+import { ClassState, AgendaCurriculum, ScriptAction, ClassControl } from '@classon/react-native';
 
 <View style={styles.container}>
   {isTeacher && live && (
     <View style={styles.vControl}>
       <ClassState isTeacher={isTeacher} live={live} />
-      <ControlClassroom isTeacher={isTeacher} live={live} />
+      <ClassControl isTeacher={isTeacher} live={live} />
       <ClassInfo />
     </View>
   )}
@@ -90,10 +93,10 @@ import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, 
         <View style={styles.container}>
           {live ? (
             <Connection classId={classId} token={token} conferenceType={0}>
-              <LoadingScreen bookData={bookData} live={true} user={user} />
+              <ClassonPlayer bookData={bookData} live={true} user={user} />
             </Connection>
           ) : (
-            <LoadingScreen bookData={bookData} user={user} />
+            <ClassonPlayer bookData={bookData} user={user} />
           )}
         </View>
 
@@ -131,9 +134,9 @@ import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, 
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
 | conferenceType  (required) |  Use the conference type for classes   | number (0: no conference, 1: bluesea conference )|
-| children (required)     | Is a child component wrapped by Connection. It is [ClassonScreen](#--classonscreen) | JSX.Element  |
+| children (required)     | Is a child component wrapped by Connection. It is [ClassonScreen](#--classonplayer) | JSX.Element  |
 
-#### - ClassonScreen
+#### - ClassonPlayer
 
 | Name                  |               Description                                        | Type         |
 |-----------------------|------------------------------------------------------------------|--------------|
