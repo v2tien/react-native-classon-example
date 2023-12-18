@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
-import { bookData } from '../common/bookdata2';
+import { bookData } from '../common/bookdata';
 import { useNavigation } from '@react-navigation/native';
 import { PlayProps } from '../common/classroom';
 import FastImage from 'react-native-fast-image';
