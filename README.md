@@ -48,7 +48,11 @@ This is tutorial add font to project. [Add Font](https://www.thirdrocktechkno.co
 - [react-native-fs](https://github.com/itinance/react-native-fs)
 - [@shopify/react-native-skia](https://github.com/Shopify/react-native-skia)
 - [react-native-redash](https://github.com/wcandillon/react-native-redash)
-
+- [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
+- [react-native-keyboard-aware-scroll-view](https://github.com/APSL/react-native-keyboard-aware-scroll-view)
+- [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image)
+- [@babel/plugin-proposal-export-namespace-from](https://babeljs.io/docs/babel-plugin-transform-export-namespace-from)
+  
 So during the integration and testing process, if any errors arise, please check if the above packages are installed in the project or not. If not, please install the required package and try again.
 
 ## Usage
