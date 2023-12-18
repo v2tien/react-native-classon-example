@@ -66,7 +66,7 @@ import { ClassOn } from '@classon/react-native';
 />
 ```
 ### Custom view
-Tuỳ chỉnh view hiển thị theo ý của mình
+Tuỳ chỉnh view hiển thị theo ý của mình [Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/home/custom-classroom.tsx)
 
 ```js
 import { ClassonPlayer, Connection, BlueseaConference } from '@classon/react-native';
