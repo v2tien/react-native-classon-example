@@ -121,7 +121,7 @@ import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, 
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
 | bookData (required)     | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts)) | SectionType[] |
-| user  (required)        | User information                                              | Object ({id: number, role: string, fullname?: string})|
+| user  (optional)        | User information                                              | Object ({id: number, role: string, fullname?:string}) |
 | live (required)         | Set class status online or offline                            | Boolean      |
 
 #### - Connection
@@ -138,7 +138,7 @@ import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, 
 | Name                  |               Description                                        | Type         |
 |-----------------------|------------------------------------------------------------------|--------------|
 | bookData (required)   | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts))| SectionType[] |
-| user  (optional)      | User information                                              | Object ({id: number, role: string})|
+| user  (optional)      | User information                                              | Object ({id: number, role: string, fullname?:string}) |
 | render (optional)     | Render progress component while waiting for the data to completed | Function     |
 | live (optional)       | Set class status online or offline                            | Boolean     |
 | confetti (optional)   | Video at the end of the lesson                                | Array<string>     |
