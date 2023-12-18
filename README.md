@@ -34,20 +34,14 @@ NSURLIsExcludedFromBackupKey
 
 `(IOS only): The NSURLIsExcludedFromBackupKey property can be provided to set this attribute on iOS platforms. Apple will reject apps for storing offline cache data that does not have this attribute.`
 
-- You need add Font to your project. [Download Font](https://git.ngon.io/classon.io/classon-react-native/-/tree/master/example/src/assets/fonts)
-
-This is tutorial add font to project. [Add Font](https://www.thirdrocktechkno.com/blog/how-to-add-custom-fonts-in-react-native-app/)
-
 **Note:** The classon-react-native package uses several other library packages to build and support such as:
 - [react-natie-video](https://github.com/react-native-video/react-native-video)
 - [react-native-webview](https://github.com/react-native-webview/react-native-webview)
 - [react-native-sound](https://github.com/zmxv/react-native-sound)
-- [rn-scratch-card](https://github.com/sweatco/rn-scratch-card)
 - [react-native-svg](https://github.com/software-mansion/react-native-svg)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-fs](https://github.com/itinance/react-native-fs)
 - [@shopify/react-native-skia](https://github.com/Shopify/react-native-skia)
-- [react-native-redash](https://github.com/wcandillon/react-native-redash)
 - [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
 - [react-native-keyboard-aware-scroll-view](https://github.com/APSL/react-native-keyboard-aware-scroll-view)
 - [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image)
@@ -62,25 +56,20 @@ So during the integration and testing process, if any errors arise, please check
 How to add the SDK:
 
 ```js
-import ClassON from '@classon/react-native';
-
-or
-
-import { Connection, ClassonScreen, pubsubClient, ActionClientType } from '@classon/react-native';
+import { ClassOn } from '@classon/react-native';
 ```
 
 ### Basic
 A simple usage:
 
 ```js
-<Connection
+<ClassOn
   classId={classId}
-  token={token}>
-  <ClassonScreen
-    live={true}
-    bookData={bookData}>
-  </ClassonScreen>
-</Connection>
+  token={token}
+  bookData={bookData}
+  live={true}
+  user={user}
+/>
 ```
 
 ## Component
