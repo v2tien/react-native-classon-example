@@ -51,18 +51,12 @@ So during the integration and testing process, if any errors arise, please check
 
 ## Usage
 
-### Import
-
-How to add the SDK:
-
-```js
-import { ClassOn } from '@classon/react-native';
-```
-
 ### Basic
 A simple usage:
 
 ```js
+import { ClassOn } from '@classon/react-native';
+
 <ClassOn
   classId={classId}
   token={token}
@@ -71,8 +65,64 @@ A simple usage:
   user={user}
 />
 ```
+### Custom view
+Tuỳ chỉnh view hiển thị theo ý của mình
+
+```js
+import { LoadingScreen, Connection, ClassState, AgendaCurriculum, ScriptAction, ControlClassroom } from '@classon/react-native';
+
+<View style={styles.container}>
+  {isTeacher && live && (
+    <View style={styles.vControl}>
+      <ClassState isTeacher={isTeacher} live={live} />
+      <ControlClassroom isTeacher={isTeacher} live={live} />
+      <ClassInfo />
+    </View>
+  )}
+
+  <KeyboardAwareScrollView
+    contentContainerStyle={{ width: '100%', height: '100%' }}
+    scrollEnabled={false}
+    nestedScrollEnabled
+  >
+    <View style={styles.vRow}>
+      <View style={{ width: live ? '80%' : '100%', height: '100%' }}>
+        <View style={styles.container}>
+          {live ? (
+            <Connection classId={classId} token={token} conferenceType={0}>
+              <LoadingScreen bookData={bookData} live={true} user={user} />
+            </Connection>
+          ) : (
+            <LoadingScreen bookData={bookData} user={user} />
+          )}
+        </View>
+
+        {isTeacher && live && (
+          <View>
+            <AgendaCurriculum live={live} />
+          </View>
+        )}
+
+        {isTeacher && live && <ScriptAction />}
+      </View>
+
+      {show && live && <BlueseaConference />}
+    </View>
+  </KeyboardAwareScrollView>
+</View>
+```
 
 ## Component
+
+#### - ClassOn
+
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| classId (required)      | ID of the lesson or class                                     | string       |
+| token   (required)      | Is the application token to connect to the socket server      | string       |
+| bookData (required)     | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts)) | SectionType[] |
+| user  (required)        | User information                                              | Object ({id: number, role: string, fullname?: string})|
+| live (required)         | Set class status online or offline                            | Boolean      |
 
 #### - Connection
 
@@ -87,7 +137,7 @@ A simple usage:
 
 | Name                  |               Description                                        | Type         |
 |-----------------------|------------------------------------------------------------------|--------------|
-| bookData (required)   | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts))                                                                                       | Object       |
+| bookData (required)   | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts))| SectionType[] |
 | user  (optional)      | User information                                              | Object ({id: number, role: string})|
 | render (optional)     | Render progress component while waiting for the data to completed | Function     |
 | live (optional)       | Set class status online or offline                            | Boolean     |
