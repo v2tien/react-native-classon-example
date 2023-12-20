@@ -115,6 +115,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 ## Components
 
 #### - ClassOn
+Default component of sdk. It contains full control buttons and status displays for learning and teaching.
 
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
@@ -124,6 +125,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | live (required)         | Set class status online or offline                            | Boolean      |
 
 #### - Connection
+It is a necessary component to connect when studying online.
 
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
@@ -133,6 +135,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | children (required)     | Is a child component wrapped by Connection. It is [ClassonPlayer](#--classonplayer) | JSX.Element  |
 
 #### - ClassonPlayer
+The component displays the status interface waiting for data processing and lesson display.
 
 | Name                  |               Description                                       | Type         |
 |-----------------------|-----------------------------------------------------------------|--------------|
@@ -143,6 +146,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | live (optional)       | Set class status online or offline                              | Boolean       |
 
 #### - BlueseaConference
+The component displays a conference call between class members.
 
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
@@ -161,6 +165,8 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | videoStyle   (optional)       | Style object to customize video item view   | ViewStyle       |
 
 #### - ClassState
+The component displays the status of the class.
+
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
@@ -171,6 +177,8 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | logo                    | Customize logo                                                | ImageRequireSource |
 
 #### - ClassControl
+The component displays controls for the teacher in the classroom.
+
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
@@ -187,6 +195,8 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | sliderStyles            | Style object to customize volume view                         | [MultiSliderProps](https://github.com/ptomasroos/react-native-multi-slider/blob/master/index.d.ts#L38) |
 
 #### - ClassInfo
+The component displays class information
+
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
@@ -194,6 +204,8 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | render (optional)       | Customize class info view                                     | JSX.Element  |
 
 #### - AgendaCurriculum
+The component displays the classroom curriculum.
+
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
