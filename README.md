@@ -69,7 +69,7 @@ import { ClassOn } from '@classon/react-native';
 Tuỳ chỉnh view hiển thị theo ý của mình [Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/home/custom-classroom.tsx)
 
 ```js
-import { ClassonPlayer, Connection, BlueseaConference } from '@classon/react-native';
+import { ClassonPlayer, Connection } from '@classon/react-native';
 
 // Một số thành phần chỉ hiển thị trong vai trò của giáo viên: 
 import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } from '@classon/react-native';
@@ -89,7 +89,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
     nestedScrollEnabled
   >
     <View style={styles.vRow}>
-      <View style={{ width: live ? '80%' : '100%', height: '100%' }}>
+      <View style={{ width: '100%', height: '100%' }}>
         <View style={styles.container}>
           {live ? (
             <Connection classId={classId} token={token} conferenceType={0}>
@@ -108,8 +108,6 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 
         {isTeacher && live && <ScriptAction />}
       </View>
-
-      {show && live && <BlueseaConference />}
     </View>
   </KeyboardAwareScrollView>
 </View>
@@ -123,8 +121,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
-| bookData (required)     | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts)) | SectionType[] |
-| user  (optional)        | User information                                              | Object ({id: number, role: string, fullname?:string}) |
+| user  (required)        | User information                                              | Object ({id: number, role: string, fullname?:string}) |
 | live (required)         | Set class status online or offline                            | Boolean      |
 
 #### - Connection
@@ -134,23 +131,23 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
 | conferenceType  (required) |  Use the conference type for classes   | number (0: no conference, 1: bluesea conference )|
-| children (required)     | Is a child component wrapped by Connection. It is [ClassonScreen](#--classonplayer) | JSX.Element  |
+| children (required)     | Is a child component wrapped by Connection. It is [ClassonPlayer](#--classonplayer) | JSX.Element  |
 
 #### - ClassonPlayer
 
-| Name                  |               Description                                        | Type         |
-|-----------------------|------------------------------------------------------------------|--------------|
-| bookData (required)   | Lesson's data ([Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/common/bookdata.ts))| SectionType[] |
-| user  (optional)      | User information                                              | Object ({id: number, role: string, fullname?:string}) |
-| render (optional)     | Render progress component while waiting for the data to completed | Function     |
-| live (optional)       | Set class status online or offline                            | Boolean     |
-| confetti (optional)   | Video at the end of the lesson                                | Array<string>     |
+| Name                  |               Description                                       | Type         |
+|-----------------------|-----------------------------------------------------------------|--------------|
+| classId (required)    | ID of the lesson or class                                       | string       |
+| token   (required)    | Is the application token to connect to the socket server        | string       |
+| user  (required)      | User information                                                | Object ({id: number, role: string, fullname?:string}) |
+| render (optional)     | Render progress component while waiting for the data to completed | JSX.Element |
+| live (optional)       | Set class status online or offline                              | Boolean       |
 
 #### - BlueseaConference
 
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
-| horizontal (optional)      |  List displays horizontally or vertically   | Boolean       |
+| horizontal (optional)      |  List displays horizontally or vertically   | Boolean       
 | onlyAudio   (optional)      | Allow only audio, no video     | Boolean   |
 | containerStyle  (optional) |  A style object that allow you to customize the BlueseaView container style   | ViewStyle|
 | listContainerStyle (optional) | A style object that allow you to customize list container style  | ViewStyle  |
@@ -169,8 +166,10 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize item container                      | ViewStyle    |
 | buttonStyles            | Style object to customize button                              | ViewStyle    |
+| logoStyle               | Style object to customize logo                                | Boolean      |
 | isTeacher               | Set teacher or student                                        | Boolean      |
 | live                    | Class status online or offline                                | Boolean      |
+| logo                    | Customize logo                                                | ImageRequireSource |
 
 #### - ClassControl
 | Name                    |               Description                                     | Type         |
@@ -188,6 +187,12 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | iconStyle               | Style object to customize icon                                | ViewStyle    |
 | sliderStyles            | Style object to customize volume view                         | [MultiSliderProps](https://github.com/ptomasroos/react-native-multi-slider/blob/master/index.d.ts#L38) |
 
+#### - ClassInfo
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| placement               | Where to position the tooltip                                 | top, bottom, left, right, center|
+| render (optional)       | Customize class info view                                     | JSX.Element  |
 
 ## API
 
@@ -212,13 +217,19 @@ pubsubClient.publish('control', { type: ActionClientType.LoadingRetry });
 - Call to start the lesson
 
 ```js
-pubsubClient.publish('control', { type: ActionClientType.StartClassroom });
+pubsubClient.publish('control', { type: ActionClientType.StartClassroom }); // Offline
+
+pubsub.publish('general', { type: ActionType.StartClass, payload: { action: 'request' } }); // Online
 ```
 
-- Call when the screen size changes such as shrinking or zooming
+- Call when next/previous page the lesson
 
 ```js
-pubsubClient.publish('control', { type: ActionClientType.Resize });
+pubsub.publish('general', { type: 'next-page' }); // next page
+
+pubsub.publish('general', { type: 'prev-page' }); // previous page
+
+pubsub.publish('general', { type: 'jump-page', payload: { sectionId, pageId }}); // jump page
 ```
 
 - Call to skip downloading file when trying to download the file many times and still has an error message
