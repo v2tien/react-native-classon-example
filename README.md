@@ -60,18 +60,17 @@ import { ClassOn } from '@classon/react-native';
 <ClassOn
   classId={classId}
   token={token}
-  bookData={bookData}
   live={true}
   user={user}
 />
 ```
 ### Custom view
-Tuỳ chỉnh view hiển thị theo ý của mình [Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/home/custom-classroom.tsx)
+Customize the display view [Example](https://github.com/v2tien/react-native-classon-example/blob/master/src/home/custom-classroom.tsx)
 
 ```js
 import { ClassonPlayer, Connection } from '@classon/react-native';
 
-// Một số thành phần chỉ hiển thị trong vai trò của giáo viên: 
+// Some components are only visible in the teacher role: 
 import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } from '@classon/react-native';
 
 <View style={styles.container}>
@@ -93,10 +92,10 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
         <View style={styles.container}>
           {live ? (
             <Connection classId={classId} token={token} conferenceType={0}>
-              <ClassonPlayer bookData={bookData} live={true} user={user} />
+              <ClassonPlayer classId={classId} token={token} live={true} user={user} />
             </Connection>
           ) : (
-            <ClassonPlayer bookData={bookData} user={user} />
+            <ClassonPlayer classId={classId} token={token} user={user} />
           )}
         </View>
 
@@ -130,7 +129,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | classId (required)      | ID of the lesson or class                                     | string       |
 | token   (required)      | Is the application token to connect to the socket server      | string       |
-| conferenceType  (required) |  Use the conference type for classes   | number (0: no conference, 1: bluesea conference )|
+| conferenceType (required) |  Use the conference type for classes   | number (0: no conference, 1: bluesea conference )|
 | children (required)     | Is a child component wrapped by Connection. It is [ClassonPlayer](#--classonplayer) | JSX.Element  |
 
 #### - ClassonPlayer
@@ -151,11 +150,11 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 | onlyAudio   (optional)      | Allow only audio, no video     | Boolean   |
 | containerStyle  (optional) |  A style object that allow you to customize the BlueseaView container style   | ViewStyle|
 | listContainerStyle (optional) | A style object that allow you to customize list container style  | ViewStyle  |
-| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#--blueseaitemprops)  |
+| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#-#blueseaitemprops)  |
 | renderBlueseaItem (optional) | Customize view video item conference      | JSX.Element       |
 | renderBluseaView (optional)  | Customize video conference container      | JSX.Element       |
 
-##### - BlueseaItemProps
+##### - #BlueseaItemProps
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
 | itemContainerStyle (optional) | Style object to customize item container   | ViewStyle       |
@@ -164,7 +163,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 #### - ClassState
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
-| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| containerStyles         | Style object to customize container view                      | ViewStyle    |
 | buttonStyles            | Style object to customize button                              | ViewStyle    |
 | logoStyle               | Style object to customize logo                                | Boolean      |
 | isTeacher               | Set teacher or student                                        | Boolean      |
@@ -174,15 +173,15 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 #### - ClassControl
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
-| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| containerStyles         | Style object to customize container view                      | ViewStyle    |
 | buttonStyles            | Style object to customize button                              | ViewStyle    |
 | iconStyle               | Style object to customize icon                                | ViewStyle    |
 | volumeStyles            | Style object to customize volume view                         | [VolumeProps](#--volumeprops)) |
 
-##### - VolumeProps
+##### - #VolumeProps
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
-| viewContent             | Style object to customize item content                        | ViewStyle    |
+| viewContent             | Style object to customize container view                      | ViewStyle    |
 | volumeIcon              | Customize volume icon                                         | ImageRequireSource|
 | iconStyle               | Style object to customize icon                                | ViewStyle    |
 | sliderStyles            | Style object to customize volume view                         | [MultiSliderProps](https://github.com/ptomasroos/react-native-multi-slider/blob/master/index.d.ts#L38) |
@@ -190,22 +189,32 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 #### - ClassInfo
 | Name                    |               Description                                     | Type         |
 |-------------------------|---------------------------------------------------------------|--------------|
-| containerStyles         | Style object to customize item container                      | ViewStyle    |
+| containerStyles         | Style object to customize container view                      | ViewStyle    |
 | placement               | Where to position the tooltip                                 | top, bottom, left, right, center|
 | render (optional)       | Customize class info view                                     | JSX.Element  |
+
+#### - AgendaCurriculum
+| Name                    |               Description                                     | Type         |
+|-------------------------|---------------------------------------------------------------|--------------|
+| containerStyles         | Style object to customize container view                      | ViewStyle    |
+| labelButtonStyles       | Style object to customize button label                        | ViewStyle    |
+| buttonStyles            | Style object to customize button                              | ViewStyle    |
+| agendaItemStyles        | Style object to customize item view                           | ItemProps    |
+| live                    | Class status online or offline                                | Boolean      |
+| render                  | Customize agenda/curriculum view                              | JSX.Element  |
 
 ## API
 
 ### Action type
 
-| Name                 |               Description                                    
-|----------------------|---------------------------------------------------------------|
-| LoadingProcess       | The process of downloading lesson data
-| LoadingComplete      | The process of downloadig lesson data is completed
-| LoadingError         | Error message while downloading lesson data
-| LoadingRetry         | Reload lesson data failed 
-| StartClassroom       | Start the lesson
-| FinishClassroom      | End of lesson
+| Name                 |               Description                          |          
+|----------------------|----------------------------------------------------|
+| LoadingProcess       | The process of downloading lesson data             |
+| LoadingComplete      | The process of downloadig lesson data is completed |
+| LoadingError         | Error message while downloading lesson data        |
+| LoadingRetry         | Reload lesson data failed                          |
+| StartClassroom       | Start the lesson                                   |
+| FinishClassroom      | End of lesson                                      |
 
 ### Methods
 - Call to reload file that failed during data download
@@ -238,7 +247,7 @@ pubsub.publish('general', { type: 'jump-page', payload: { sectionId, pageId }});
 pubsubClient.publish('load-source', { type: ActionClientType.LoadingIgnore, payload: { url: string }});
 ```
 
-### Events
+### Events listen
 
 - Data download progress
 
@@ -291,6 +300,35 @@ useEffect(() => {
   return subscriptionControl.unsubscribe;
 }, []);
 ```
+- Listen at the ready to start class
+
+```
+useEffect(() => {
+  const fnc = (action: Action) => {
+    if (action.type !== ActionType.ReadyToStart) {
+      return;
+    }
+    if (action.payload.action === 'response') {
+      // ready to start
+    }
+  
+    if (action.payload.action === 'error') {
+      Alert.alert('Error', action.payload.message);
+      return;
+    }
+  };
+  
+  pubsub.subscribe('general', fnc);
+  
+  return () => {
+    pubsub.unsubscribe('general', fnc);
+  };
+}, []);
+```
+
+## Fix issues
+
+- https://github.com/zmxv/react-native-sound/issues/799#issuecomment-1534340874
 
 ## Contributing
 
@@ -305,7 +343,3 @@ MIT
 Commit Lint:
 
 https://github.com/conventional-changelog/commitlint/#what-is-commitlint
-
-Fix issue:
-
-https://github.com/zmxv/react-native-sound/issues/799#issuecomment-1534340874
