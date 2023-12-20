@@ -5,9 +5,9 @@ classon react native sdk
 ## Table of Contents
 1. [Install](#install)
 1. [Usage](#usage)
-1. [Component](#component)
+1. [Components](#components)
 1. [API](#api)
-1. [Examples](https://github.com/v2tien/react-native-classon-example)
+1. [Example](https://github.com/v2tien/react-native-classon-example)
 
 ## Install
 
@@ -112,7 +112,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 </View>
 ```
 
-## Component
+## Components
 
 #### - ClassOn
 
@@ -148,9 +148,9 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | horizontal (optional)      |  List displays horizontally or vertically   | Boolean       
 | onlyAudio   (optional)      | Allow only audio, no video     | Boolean   |
-| containerStyle  (optional) |  A style object that allow you to customize the BlueseaView container style   | ViewStyle|
+| containerStyles  (optional) |  A style object that allow you to customize the BlueseaView container style   | ViewStyle|
 | listContainerStyle (optional) | A style object that allow you to customize list container style  | ViewStyle  |
-| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#-#blueseaitemprops)  |
+| itemStyles (optional)      | Customize view video item                    | [BlueseaItemProps](#--blueseaitemprops)  |
 | renderBlueseaItem (optional) | Customize view video item conference      | JSX.Element       |
 | renderBluseaView (optional)  | Customize video conference container      | JSX.Element       |
 
@@ -165,7 +165,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
 | buttonStyles            | Style object to customize button                              | ViewStyle    |
-| logoStyle               | Style object to customize logo                                | Boolean      |
+| logoStyles              | Style object to customize logo                                | Boolean      |
 | isTeacher               | Set teacher or student                                        | Boolean      |
 | live                    | Class status online or offline                                | Boolean      |
 | logo                    | Customize logo                                                | ImageRequireSource |
@@ -175,7 +175,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | containerStyles         | Style object to customize container view                      | ViewStyle    |
 | buttonStyles            | Style object to customize button                              | ViewStyle    |
-| iconStyle               | Style object to customize icon                                | ViewStyle    |
+| iconStyles              | Style object to customize icon                                | ViewStyle    |
 | volumeStyles            | Style object to customize volume view                         | [VolumeProps](#--volumeprops)) |
 
 ##### - #VolumeProps
@@ -183,7 +183,7 @@ import { ClassState, AgendaCurriculum, ScriptAction, ClassControl, ClassInfo } f
 |-------------------------|---------------------------------------------------------------|--------------|
 | viewContent             | Style object to customize container view                      | ViewStyle    |
 | volumeIcon              | Customize volume icon                                         | ImageRequireSource|
-| iconStyle               | Style object to customize icon                                | ViewStyle    |
+| iconStyles              | Style object to customize icon                                | ViewStyle    |
 | sliderStyles            | Style object to customize volume view                         | [MultiSliderProps](https://github.com/ptomasroos/react-native-multi-slider/blob/master/index.d.ts#L38) |
 
 #### - ClassInfo
@@ -302,7 +302,7 @@ useEffect(() => {
 ```
 - Listen at the ready to start class
 
-```
+```js
 useEffect(() => {
   const fnc = (action: Action) => {
     if (action.type !== ActionType.ReadyToStart) {
