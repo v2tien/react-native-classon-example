@@ -1,9 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   Action,
-  ActionClient,
   ActionClientType,
   AgendaCurriculum,
-  BlueseaConference,
   ClassControl,
   ClassInfo,
   ClassState,
@@ -11,16 +10,13 @@ import {
   Connection,
   ScriptAction,
   pubsub,
-  pubsubClient,
 } from '@classon/react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { PlayProps } from '../common/classroom';
 
 export function ClassOn(data: PlayProps) {
-  const [show, setShow] = useState<boolean>(true);
-
   const isTeacher = data.user.role === 'TEACHER' ? true : false;
 
   useEffect(() => {
@@ -35,20 +31,10 @@ export function ClassOn(data: PlayProps) {
       }
     };
 
-    const controlFnc = (action: ActionClient) => {
-      if (action.type !== ActionClientType.ToggleConference) {
-        return;
-      }
-
-      setShow(action.payload.showSideBar);
-    };
-
     pubsub.subscribe('general', fnc);
-    pubsubClient.subscribe('control', controlFnc);
 
     return () => {
       pubsub.unsubscribe('general', fnc);
-      pubsubClient.unsubscribe('control', controlFnc);
     };
   }, []);
 
@@ -63,11 +49,11 @@ export function ClassOn(data: PlayProps) {
       )}
 
       <KeyboardAwareScrollView
-        contentContainerStyle={{ width: '100%', height: '100%' }}
+        contentContainerStyle={styles.scrollview}
         scrollEnabled={false}
         nestedScrollEnabled>
         <View style={[styles.vRow]}>
-          <View style={{ width: data.live ? '80%' : '100%', height: '100%' }}>
+          <View style={{ width: data.live ? '100%' : '100%', height: '100%' }}>
             <View style={styles.container}>
               {data.live ? (
                 <Connection
@@ -75,13 +61,18 @@ export function ClassOn(data: PlayProps) {
                   token={data.token ?? ''}
                   conferenceType={0}>
                   <ClassonPlayer
-                    bookData={data.bookData}
+                    classId={data.classId ?? ''}
+                    token={data.token ?? ''}
                     live={true}
                     user={data.user}
                   />
                 </Connection>
               ) : (
-                <ClassonPlayer bookData={data.bookData} user={data.user} />
+                <ClassonPlayer
+                  classId={data.classId ?? ''}
+                  token={data.token ?? ''}
+                  user={data.user}
+                />
               )}
             </View>
 
@@ -93,8 +84,6 @@ export function ClassOn(data: PlayProps) {
 
             {isTeacher && data.live && <ScriptAction />}
           </View>
-
-          {show && data.live && <BlueseaConference />}
         </View>
       </KeyboardAwareScrollView>
     </View>
@@ -102,6 +91,10 @@ export function ClassOn(data: PlayProps) {
 }
 
 const styles = StyleSheet.create({
+  scrollview: {
+    width: '100%',
+    height: '100%',
+  },
   container: {
     flex: 1,
   },

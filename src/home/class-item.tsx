@@ -1,7 +1,6 @@
 import React from 'react';
 import { Alert, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
-import { bookData } from '../common/bookdata';
 import { useNavigation } from '@react-navigation/native';
 import { PlayProps } from '../common/classroom';
 import FastImage from 'react-native-fast-image';
@@ -30,15 +29,23 @@ export function ClassItem(props: { item: Class }) {
         return;
       }
 
+      // const findRole: UserRole = global.user.partner.user_roles.find(
+      //   (r: UserRole) => r.user_id === myInfo.linked_user_id,
+      // );
+
+      // if (!findRole) {
+      //   return;
+      // }
+
       const data: PlayProps = {
-        bookData: item.book_lessons?.content ?? bookData,
         live: true,
         token: `Bearer ${global.token}`,
         classId: item.id,
+        // roleId: findRole.role_id,
         user: {
           id: myInfo.linked_user_id,
           role: myInfo.class_roles?.code,
-          fullname: myInfo.linked_user?.username,
+          fullname: global.user.user.username,
         },
       };
       navigation.navigate('Classroom', { data });

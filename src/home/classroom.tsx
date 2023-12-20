@@ -5,7 +5,8 @@ import {
   ActionClient,
   pubsub,
 } from '@classon/react-native';
-import { ClassOn } from '@classon/react-native';
+import { ClassOn } from '@classon/react-native'; // ClassOn from sdk
+// import { ClassOn } from './custom-classroom'; // ClassOn from custom view
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, View } from 'react-native';
 import { PlayProps } from '../common/classroom';
@@ -114,10 +115,9 @@ export function Classroom() {
       </View>
 
       <ClassOn
-        classId={data.classId ?? 'class_test'}
+        classId={data.classId ?? ''}
         token={data.token ?? ''}
         user={data.user}
-        bookData={data.bookData}
         live={data.live ?? false}
       />
     </View>

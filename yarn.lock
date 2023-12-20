@@ -1175,10 +1175,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@classon/react-native@^0.2.12":
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/@classon/react-native/-/react-native-0.2.12.tgz#924cd4098c90595c8e0f5745c275d14472878021"
-  integrity sha512-HkZjwfy19iy7vncBMr0833BN+qsulQ54eGnN2hBMbomMcWqAAdan56mcarvx7bs106TFDIElBUca5Cpp6fmpoQ==
+"@classon/react-native@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@classon/react-native/-/react-native-0.3.1.tgz#1076aba2d1dfd1c2b84e0f760f7764897855e420"
+  integrity sha512-rQqceZP8FvE/EAU4hKTFk9pgsRcYYsP3LmoJXRiUYcEeNb+osV2aTDQ4bsIdBun9hwNgISjeeh5+qbHCmFgrZg==
   dependencies:
     "@ptomasroos/react-native-multi-slider" "^2.2.2"
     "@types/lodash.isnan" "^3.0.7"
