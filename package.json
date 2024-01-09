@@ -20,6 +20,7 @@
     "axios": "^1.6.2",
     "bluesea-media-react-native-sdk": "^1.0.0",
     "bluesea-react-native-webrtc": "^111.0.1",
+    "gsap": "^3.12.4",
     "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-native": "0.73.0",
