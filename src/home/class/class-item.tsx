@@ -1,10 +1,10 @@
 import React from 'react';
 import { Alert, Text, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import { styles } from '../styles';
 import { useNavigation } from '@react-navigation/native';
-import { PlayProps } from '../common/classroom';
+import { PlayProps } from '../../common/classroom';
 import FastImage from 'react-native-fast-image';
-import { Class, Participation } from '../types/class';
+import { Class, Participation } from '../../types/class';
 
 export function ClassItem(props: { item: Class }) {
   const { item } = props;

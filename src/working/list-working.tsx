@@ -71,7 +71,7 @@ export function ListWorking() {
           if (status === 200) {
             global.token = data.token.jwt;
             await AsyncStorage.setItem('TOKEN', data.token.jwt);
-            navigation.replace('Classes');
+            navigation.replace('Home');
           } else {
             Alert.alert('Error', `status = ${status}`);
           }

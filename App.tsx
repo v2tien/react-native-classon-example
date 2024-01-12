@@ -11,11 +11,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useKeepAwake } from '@sayem314/react-native-keep-awake';
 import { Login } from './src/auth/login';
-import { Classes } from './src/home/classes';
-import { Classroom } from './src/home/classroom';
+import { Classes } from './src/home/class/classes';
+import { Classroom } from './src/home/class/classroom';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ListWorking } from './src/working/list-working';
 import { StatusBar } from 'react-native';
+import { Home } from './src/home/home';
+import { Books } from './src/home/book/books';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,10 +39,12 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName={token ? 'Classes' : 'Login'}>
+          initialRouteName={token ? 'Home' : 'Login'}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Working" component={ListWorking} />
+          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Classes" component={Classes} />
+          <Stack.Screen name="Books" component={Books} />
           <Stack.Screen name="Classroom" component={Classroom} />
         </Stack.Navigator>
       </NavigationContainer>

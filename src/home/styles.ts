@@ -42,4 +42,13 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     borderRadius: 5,
   },
+  vHome: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnOption: {
+    height: '10%',
+    marginVertical: 20,
+  },
 });

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function BackButton(props: { onBack?: () => void }) {
+export function BackButton(props: { styles?: ViewStyle; onBack?: () => void }) {
   const navigation = useNavigation<any>();
 
   return (
     <TouchableOpacity
-      style={styles.btnLogout}
+      style={[styles.btnBack, props.styles]}
       onPress={() => (props.onBack ? props.onBack() : navigation.goBack())}>
       <Image
         source={require('../image/back-button.png')}
@@ -19,7 +19,7 @@ export function BackButton(props: { onBack?: () => void }) {
 }
 
 const styles = StyleSheet.create({
-  btnLogout: {
+  btnBack: {
     padding: 10,
     marginStart: 10,
     // position: 'absolute',

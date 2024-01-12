@@ -14,7 +14,7 @@ import {
 import React, { useEffect } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { PlayProps } from '../common/classroom';
+import { PlayProps } from '../../common/classroom';
 
 export function ClassOn(data: PlayProps) {
   const isTeacher = data.user.role === 'TEACHER' ? true : false;

@@ -9,7 +9,7 @@ import { ClassOn } from '@classon/react-native'; // ClassOn from sdk
 // import { ClassOn } from './custom-classroom'; // ClassOn from custom view
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, View } from 'react-native';
-import { PlayProps } from '../common/classroom';
+import { PlayProps } from '../../common/classroom';
 
 export function Classroom() {
   const navigation = useNavigation();
