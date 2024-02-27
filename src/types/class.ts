@@ -16,7 +16,7 @@ export interface Class {
   partner_memberships: Membership;
   book_levels: Level;
   book_lessons: Lesson;
-  participations: Participation[];
+  participations: { STUDENT: Participation[]; TEACHER: Participation[] } | [];
 }
 
 export interface Membership {
@@ -57,7 +57,6 @@ export interface Lesson {
 
 export interface Participation {
   id: string;
-  linked_user_id: string;
   class_roles: {
     id: string;
     code: string;

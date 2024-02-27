@@ -35,4 +35,18 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  line: {
+    height: 1,
+    backgroundColor: 'gray',
+    width: '100%',
+    marginVertical: 10,
+  },
+  vRole: {
+    paddingVertical: 6,
+  },
+  txtRole: {
+    fontSize: 14,
+    color: 'black',
+    fontWeight: '500',
+  },
 });

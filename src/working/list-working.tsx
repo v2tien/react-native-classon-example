@@ -54,13 +54,13 @@ export function ListWorking() {
   }, [getWorking]);
 
   const selectWorking = useCallback(
-    async (item: Partner) => {
+    async (item: Partner, role_id: string) => {
       const contentHeader = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       };
 
-      const params = { partner_id: item.id };
+      const params = { partner_id: item.id, role_id };
 
       axios
         .post(`${DOMAIN_URL}/v1/auth/working`, params, {
@@ -85,7 +85,10 @@ export function ListWorking() {
   );
 
   const renderItem = ({ item }: { item: Partner }) => (
-    <WorkingItem item={item} selectWorking={() => selectWorking(item)} />
+    <WorkingItem
+      item={item}
+      selectWorking={role_id => selectWorking(item, role_id)}
+    />
   );
 
   return (
